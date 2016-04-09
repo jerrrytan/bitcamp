@@ -38,7 +38,7 @@ def load_recipes(recipes,ingredients):
     for r in recipes:  
         new_r[r] = []
         for item in recipes[r]:
-            s = item[0].lower().split()
+            s = item.lower().split()[2:]
             count_l = {}
             for ing in ingredients:
                 t = ing.lower().split()
@@ -51,9 +51,9 @@ def load_recipes(recipes,ingredients):
             #A default value to indicate more is needed
             if m == 0:
                 itm = item
-                new_r[r].append((itm,item[1],0.00)
-            else
-                 new_r[r].append((itm,item[1],ingredients[itm]))
+                new_r[r].append((itm,int(item.split()[0]),0.00))
+            else:
+                 new_r[r].append((itm,int(item.split()[0]),ingredients[itm]))
 
     for r in new_r:
         price = 0.0
@@ -62,3 +62,5 @@ def load_recipes(recipes,ingredients):
 
         final_r[(r,price)] = new_r[r]
     return final_r
+
+
