@@ -34,5 +34,3 @@ def getIngredients(genre):
     return book
 
 
-getIngredients("chinese")
-getIngredients("latin")

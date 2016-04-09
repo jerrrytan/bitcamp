@@ -5,17 +5,18 @@ There are three functions in here that will match recipes with price tags
 """
 import re
 
+
 prices = {}
 
 def load_price_csv(name="pricelist.csv"):
     """
     Takes in a list of prices delimited by commas and returns a dictionary
-    with ingredient names and parsed prices in float form along with the 
+    with ingredient names and parsed prices in float form along with the
     units represented by the price.
     """
     p_index = {}
     with open(name,"r") as f:
-        pmatch = re.compile("(\d)*\.(\d\d)") 
+        pmatch = re.compile("(\d)*\.(\d\d)")
         for line in f.readlines():
             s = line.split(",")
             try:
@@ -25,7 +26,7 @@ def load_price_csv(name="pricelist.csv"):
                 pass
         return p_index
 
-def load_recipes(recipes,ingredients):
+def load_recipes(recipes):
     """
     Takes a dictionary of recipes that maps to lists of tuples containing
     (item, amount) **update as needed**
@@ -33,9 +34,10 @@ def load_recipes(recipes,ingredients):
     each item in the price list. The item with the most matches will be used.
     The updated tuple will be (item,amount,price)
     """
+    ingredients = load_price_csv()
     new_r = {}
     final_r = {}
-    for r in recipes:  
+    for r in recipes:
         new_r[r] = []
         for item in recipes[r]:
             s = item.lower().split()[2:]
