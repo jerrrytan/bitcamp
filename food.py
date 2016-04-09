@@ -1,22 +1,42 @@
-import json
 import requests
-import urllib
+import json
 
-args = {
-        'client_id': '3bcd09ce-2cfb-4857-ab7f-fd9b6b8b25d3',#your client id here
-        'client_secret': 'kCygMX9h7Wl3t3TLJExZWXQyJUf+6yJdwWnyZnzqAYI',#your azure secret here
-        'scope': 'http://api.microsofttranslator.com',
-        'grant_type': 'client_credentials'
+def getIngredients(j):
+
+    ingredients = list()
+    book = {}
+    for num in range(0,5):
+        ingredients.clear()
+        for i in j['hits'][num]['recipe']['ingredientLines']:
+            ingredients.append(i)
+        book[j['hits'][num]['recipe']['label']] = ingredients
+
+    for i in book.keys():
+        print(i)
+        for k in book[i]:
+            print(k)
+
+    return book
+
+
+def accessRecipes(genre):
+
+    url = "https://edamam-recipe-search-and-diet-v1.p.mashape.com/search?_app_id=2a7c2865&_app_key=9a3f87c1707e67f965284ca3eb613dae&q="+genre
+    headers = {
+        "X-Mashape-Key": "GgV2guTBbhmsh0sMA33KSrcMjuyMp1EqLsPjsnZlRHycWvV5Pt",
+        "Accept": "application/json"
     }
-oauth_url = 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13'
-oauth_junk = json.loads(requests.post(oauth_url,data=urllib.urlencode(args)).content)
-translation_args = {
-        'text': "",
-        'to': 'zh-CHT',
-        'from': 'en'
-        }
+    r = requests.get(url, headers=headers)
+    j = json.loads(r.text)
 
-headers={'Authorization': 'Bearer '+oauth_junk['access_token']}
-translation_url = 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?'
-translation_result = requests.get(translation_url+urllib.urlencode(translation_args),headers=headers)
-print translation_result.content
+    ingredients = getIngredients(j)
+
+    #print (j['hits'].recipe)
+    return
+
+
+ #   r = requests.get(url)
+
+
+
+getRecipes("chinese")
