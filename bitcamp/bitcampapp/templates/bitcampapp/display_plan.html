@@ -14,13 +14,13 @@
 		<TD ALIGN="center">Saturday</TD>
 	</TR>
 	<TR>
-		<TD ALIGN="center">mealPlan</TD>
-		<TD ALIGN="center">mealPlan</TD>
-		<TD ALIGN="center">mealPlan</TD>
-		<TD ALIGN="center">mealPlan</TD>
-		<TD ALIGN="center">mealPlan</TD>
-		<TD ALIGN="center">mealPlan</TD>
-		<TD ALIGN="center">mealPlan</TD>
+        <TD ALIGN="center">{{ meal_plan.0 }}</TD>
+        <TD ALIGN="center">{{ meal_plan.1 }}</TD>
+        <TD ALIGN="center">{{ meal_plan.2 }}</TD>
+        <TD ALIGN="center">{{ meal_plan.3 }}</TD>
+        <TD ALIGN="center">{{ meal_plan.4 }}</TD>
+        <TD ALIGN="center">{{ meal_plan.5 }}</TD>
+        <TD ALIGN="center">{{ meal_plan.6 }}</TD>
 	</TR>
 	<TR>
 		<TD ALIGN="center">$$$</TD>
@@ -32,5 +32,8 @@
 		<TD ALIGN="center">$$$</TD>
 	</TR>
 	</TABLE>
-	<button type="reset" value="Reset">Reset</button>
-	
+    <form action={% url 'reset' %} method="post">
+        {% csrf_token %}
+        <input type="submit" value="Reset"></input>
+    </form>
+
