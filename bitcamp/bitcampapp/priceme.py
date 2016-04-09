@@ -4,7 +4,7 @@ priceme.py
 There are three functions in here that will match recipes with price tags
 """
 import re
-
+from fractions import Fraction
 
 prices = {}
 
@@ -26,7 +26,7 @@ def load_price_csv(name="pricelist.csv"):
                 pass
         return p_index
 
-def load_recipes(recipes):
+def load_recipes(recipes,name="pricelist.csv"):
     """
     Takes a dictionary of recipes that maps to lists of tuples containing
     (item, amount) **update as needed**
@@ -34,7 +34,7 @@ def load_recipes(recipes):
     each item in the price list. The item with the most matches will be used.
     The updated tuple will be (item,amount,price)
     """
-    ingredients = load_price_csv()
+    ingredients = load_price_csv(name)
     new_r = {}
     final_r = {}
     for r in recipes:
@@ -53,15 +53,17 @@ def load_recipes(recipes):
             #A default value to indicate more is needed
             if m == 0:
                 itm = item
-                new_r[r].append((itm,int(item.split()[0]),0.00))
+                new_r[r].append((itm,item.split()[0],(0.00,"")))
             else:
-                 new_r[r].append((itm,int(item.split()[0]),ingredients[itm]))
+                 new_r[r].append((itm,item.split()[0],ingredients[itm]))
 
     for r in new_r:
         price = 0.0
         for i in new_r[r]:
-            price = price + i[1] * i[2][0]
-
+            try:
+                price = price + float(sum(Fraction(s) for s in i[1].split("[-]*|ml|g|L"))) * i[2][0]
+            except Exception:
+                pass
         final_r[(r,price)] = new_r[r]
     return final_r
 
