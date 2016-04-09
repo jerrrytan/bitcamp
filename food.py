@@ -32,7 +32,7 @@ def accessRecipes(genre):
     ingredients = getIngredients(j)
 
     #print (j['hits'].recipe)
-    return
+    return ingredients
 
 
  #   r = requests.get(url)
