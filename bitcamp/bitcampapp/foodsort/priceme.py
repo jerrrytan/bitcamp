@@ -31,6 +31,7 @@ def load_recipes(recipes,ingredients):
     (item, amount) **update as needed**
     For each ingredient, split by words, match as many items possible against
     each item in the price list. The item with the most matches will be used.
+    The updated tuple will be (item,amount,price)
     """
     new_r = {}
     final_r = {}
@@ -42,16 +43,16 @@ def load_recipes(recipes,ingredients):
             for ing in ingredients:
                 t = ing.split()
                 for i in t:
-                    if not i in count_l:
-                        count_l[i] = 0
-                    if not re.search(i,item[0]) == None:
-                        count_l[i] = count_l[i] + 1
+                    if not ing in count_l:
+                        count_l[ing] = 0
+                    if i in s:
+                        count_l[ing] = count_l[ing] + 1
             itm = max(count_l,key = lambda i: count_l[i])
-            new_r[itm].append(itm, item[1],ingredients[itm])
+            new_r[r].append((itm,item[1],ingredients[itm]))
     for r in new_r:
         price = 0.0
         for i in new_r[r]:
-            price = price + i[1] * i[2]
+            price = price + i[1] * i[2][0]
 
         final_r[(r,price)] = new_r[r]
     return final_r
