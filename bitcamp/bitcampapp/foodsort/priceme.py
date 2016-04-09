@@ -52,7 +52,7 @@ def load_recipes(recipes,ingredients):
             if m == 0:
                 itm = item
                 new_r[r].append((itm,item[1],0.00)
-            else
+            else:
                  new_r[r].append((itm,item[1],ingredients[itm]))
 
     for r in new_r:
