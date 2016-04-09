@@ -38,17 +38,23 @@ def load_recipes(recipes,ingredients):
     for r in recipes:  
         new_r[r] = []
         for item in recipes[r]:
-            s = item[0].split()
+            s = item[0].lower().split()
             count_l = {}
             for ing in ingredients:
-                t = ing.split()
+                t = ing.lower().split()
                 for i in t:
                     if not ing in count_l:
                         count_l[ing] = 0
                     if i in s:
                         count_l[ing] = count_l[ing] + 1
-            itm = max(count_l,key = lambda i: count_l[i])
-            new_r[r].append((itm,item[1],ingredients[itm]))
+            itm,m = max(count_l,key = lambda i: count_l[i]),max(count_l)
+            #A default value to indicate more is needed
+            if m == 0:
+                itm = item
+                new_r[r].append((itm,item[1],0.00)
+            else
+                 new_r[r].append((itm,item[1],ingredients[itm]))
+
     for r in new_r:
         price = 0.0
         for i in new_r[r]:
