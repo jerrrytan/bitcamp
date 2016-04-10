@@ -10,4 +10,4 @@ Django documentation.
 PeterPantry is licensed under the MIT License. See LICENSE for the full
 license text.
 
-Written for Bitcamp 2016
+Written for Bitcamp 2016 by Alex Pu, Jerry Tan, Thomas Tran, Harrison Huang, William Zhang
