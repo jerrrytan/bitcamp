@@ -14,6 +14,7 @@ def get_meal_plan(preferences, budget):
     costs = []
 
     recipes_to_ingredients = {}
+
     while len(recipes_to_ingredients.keys()) < NUM_MEALS:
         category = random.randrange(6)
         if category == 0:
