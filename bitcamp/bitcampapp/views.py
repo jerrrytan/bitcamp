@@ -10,7 +10,7 @@ from . import banking
 
 
 def index(request):
-    contexts = {'curr_budget' : banking.getBankAmount()}
+    contexts = {'curr_budget' : banking.getBankAmount() }
     return render(request, 'bitcampapp/index.html', contexts)
 
 
