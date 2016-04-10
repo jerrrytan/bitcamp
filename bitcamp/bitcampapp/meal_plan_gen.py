@@ -13,23 +13,29 @@ def get_meal_plan(preferences, budget):
     costs = []
 
     recipes_to_ingredients = {}
+    recipes_to_url = {}
     while len(recipes_to_ingredients.keys()) < NUM_MEALS:
         category = random.randrange(6)
         if category == 0:
             recipe_to_ingredients, recipe_to_url = getIngredients(preferences[0])
             recipes_to_ingredients.update(recipe_to_ingredients)
+            recipes_to_url.update(recipe_to_url)
         elif category == 1 or category == 2:
-            recipe_to_ingredients, recipes_to_url = getIngredients(preferences[1])
+            recipe_to_ingredients, recipe_to_url = getIngredients(preferences[1])
             recipes_to_ingredients.update(recipe_to_ingredients)
+            recipes_to_url.update(recipe_to_url)
         else:
-            recipe_to_ingredients, recipes_to_url = getIngredients(preferences[2])
+            recipe_to_ingredients, recipe_to_url = getIngredients(preferences[2])
             recipes_to_ingredients.update(recipe_to_ingredients)
+            recipes_to_url.update(recipe_to_url)
 
     recipes = []
     costs = []
     recipe_urls = []
     total_cost = 0
+    print(recipes_to_url)
     for (recipe, cost) in (load_recipes(recipes_to_ingredients)).keys():
+        print(recipe + ":" + str(cost))
         recipes.append(recipe)
         costs.append(cost)
         recipe_urls.append(recipes_to_url[recipe])

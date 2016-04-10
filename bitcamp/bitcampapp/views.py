@@ -17,14 +17,16 @@ def index(request):
 def meal_preferences_select(request):
     preferences = [request.POST['p3'], request.POST['p2'], request.POST['p1']]
     percent_budget_food = float(request.POST['percent'])
+    print (percent_budget_food)
     budget = banking.percentFood(percent_budget_food)
+    print(budget)
 
     # budget = float(request.POST['budget'])
-    try:
-        meal_plan_gen.get_meal_plan(preferences, budget)
-        return HttpResponseRedirect(reverse('display'))
-    except:
-        return HttpResponse("Insufficient funds", status=420)
+    # try:
+    meal_plan_gen.get_meal_plan(preferences, budget)
+    return HttpResponseRedirect(reverse('display'))
+    # except:
+        # return HttpResponse("Insufficient funds", status=420)
 
 
 def display_meal_plan(request):
