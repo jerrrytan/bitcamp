@@ -1,39 +1,158 @@
 <!DOCTYPE html>
-<html>
-<body>
-	<TABLE BORDER=3 CELLSPACING=3 CELLPADDING=3><TR>
-		<TD ALIGN="center" COLSPAN="7">Here is your meal plan for the week!</TD>
-	</TR>
-	<TR>
-		<TD ALIGN="center">Sunday</TD>
-		<TD ALIGN="center">Monday</TD>
-		<TD ALIGN="center">Tuesday</TD>
-		<TD ALIGN="center">Wednesday</TD>
-		<TD ALIGN="center">Thursday</TD>
-		<TD ALIGN="center">Friday</TD>
-		<TD ALIGN="center">Saturday</TD>
-	</TR>
-	<TR>
-        <TD ALIGN="center">{{ meal_plan.0 }}</TD>
-        <TD ALIGN="center">{{ meal_plan.1 }}</TD>
-        <TD ALIGN="center">{{ meal_plan.2 }}</TD>
-        <TD ALIGN="center">{{ meal_plan.3 }}</TD>
-        <TD ALIGN="center">{{ meal_plan.4 }}</TD>
-        <TD ALIGN="center">{{ meal_plan.5 }}</TD>
-        <TD ALIGN="center">{{ meal_plan.6 }}</TD>
-	</TR>
-	<TR>
-        <TD ALIGN="center">${{ meal_costs.0 }}</TD>
-        <TD ALIGN="center">${{ meal_costs.1 }}</TD>
-        <TD ALIGN="center">${{ meal_costs.2 }}</TD>
-        <TD ALIGN="center">${{ meal_costs.3 }}</TD>
-        <TD ALIGN="center">${{ meal_costs.4 }}</TD>
-        <TD ALIGN="center">${{ meal_costs.5 }}</TD>
-        <TD ALIGN="center">${{ meal_costs.6 }}</TD>
-	</TR>
-	</TABLE>
-    <form action={% url 'reset' %} method="post">
-        {% csrf_token %}
-        <input type="submit" value="Reset"></input>
-    </form>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
 
+
+        <title>Starter Template for Bootstrap</title>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Raleway' rel="stylesheet" type="text/css">
+        <style> *{
+font-family:'Raleway', sans-serif;
+src:url(https://fonts.googleapis.com/css?family=Raleway);
+        }
+        </style>
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">PeterPantry</a>
+                </div>
+
+
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="starter-template">
+                <br><br><br><br><h1 ALIGN="center">This week's meal plan!</h1>
+                <br><br><table class="pure-table" align="center">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Meal</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="pure-table-odd">
+                            <td>Sunday</td>
+                            <td>{{ meal_plan.0 }}</td>
+                            <td>${{ meal_costs.0}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Monday</td>
+                            <td>{{ meal_plan.1 }}</td>
+                            <td>${{ meal_costs.1}}</td>
+                        </tr>
+
+                        <tr class="pure-table-odd">
+                            <td>Tuesday</td>
+                            <td>{{ meal_plan.2 }}</td>
+                            <td>${{ meal_costs.2}}</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>{{ meal_plan.3 }}</td>
+                            <td>${{ meal_costs.3}}</td>
+
+                        </tr>
+
+                        <tr class="pure-table-odd">
+                            <td>Thursday</td>
+                            <td>{{ meal_plan.4 }}</td>
+                            <td>${{ meal_costs.4}}</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>Friday</td>
+                            <td>{{ meal_plan.5 }}</td>
+                            <td>${{ meal_costs.5}}</td>
+
+                        </tr>
+
+                        <tr class="pure-table-odd">
+                            <td>Saturday</td>
+                            <td>{{ meal_plan.6 }}</td>
+                            <td>${{ meal_costs.6}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <form action={% url 'reset' %} method="post"l>
+                    {% csrf_token %}
+                    <br><br><br><br><br><br><input type="submit" value="Reset"></input>
+                </form>
+                <br><br><div class="col-md-4">
+                    <figure>
+                        <img src={{url_list.0}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption>Sunday</figcaption>
+                    </figure>
+                    <figure>
+                        <img src={{url_list.1}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption>Wednesday</figcaption>
+                    </figure>
+                    <figure>
+                        <img src={{url_list.2}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption>Saturday</figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-4">
+                    <figure>
+                        <img src={{url_list.3}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption>Monday</figcaption>
+                    </figure>
+                    <figure>
+                        <img src={{url_list.4}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption>Thursday</figcaption>
+                    </figure>
+                </div>
+                <div class="cold-md-4">
+                    <figure>
+                        <img src={{url_list.5}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption>Tuesday</figcaption>
+                    </figure>
+                    <figure>
+                        <img src={{url_list.6}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption>Friday</figcaption>
+                    </figure>
+                </div>
+
+            </div>
+            <footer>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p>&copy; 2016 THEMETHINATORS.INC</p>
+            </footer>
+        </div><!-- /.container -->
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+
+
+    </body>
+</html>

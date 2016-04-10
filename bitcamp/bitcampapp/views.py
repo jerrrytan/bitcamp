@@ -3,17 +3,24 @@ from . import meal_plan_gen
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from bitcampapp.models import Meal
+from . import banking
 
 
 # Create your views here.
 
 
 def index(request):
-    return render(request, 'bitcampapp/index.html')
+    contexts = {'curr_budget' : banking.getBankAmount() }
+    return render(request, 'bitcampapp/index.html', contexts)
 
 
 def meal_preferences_select(request):
     preferences = [request.POST['p3'], request.POST['p2'], request.POST['p1']]
+    percent_budget_food = float(request.POST['percent'])
+    print (percent_budget_food)
+    budget = banking.percentFood(percent_budget_food)
+    print(budget)
+
     budget = float(request.POST['budget'])
     try:
         meal_plan_gen.get_meal_plan(preferences, budget)
@@ -26,15 +33,16 @@ def display_meal_plan(request):
     meal_models = Meal.objects.all()
     meal_list = []
     cost_list = []
+    url_list = []
     for meal_model in meal_models:
         meal_list.append(meal_model.meal_name)
         cost_list.append(meal_model.meal_cost)
+        url_list.append(meal_model.meal_url)
 
     if Meal.objects.all():
         Meal.objects.all().delete()
 
-    contexts = {'meal_plan': meal_list, 'meal_costs' : cost_list}
-
+    contexts = {'meal_plan': meal_list, 'meal_costs' : cost_list, 'url_list' : url_list}
     return render(request, 'bitcampapp/display_plan.html', contexts)
 
 
