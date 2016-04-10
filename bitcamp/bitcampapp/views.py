@@ -19,7 +19,7 @@ def meal_preferences_select(request):
         meal_plan_gen.get_meal_plan(preferences, budget)
         return HttpResponseRedirect(reverse('display'))
     except:
-        return HttpResponse("Insufficient funds", status=404)
+        return HttpResponse("Insufficient funds", status=420)
 
 
 def display_meal_plan(request):

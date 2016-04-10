@@ -34,7 +34,7 @@ def get_meal_plan(preferences, budget):
         costs.append(cost)
         total_cost += cost
 
-    if total_cost > budget*6:
+    if total_cost/6 > budget:
         raise Exception("Insufficient Budget!")
 
     else:
