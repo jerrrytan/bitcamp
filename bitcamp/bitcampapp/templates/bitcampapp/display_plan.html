@@ -20,6 +20,14 @@ font-family:'Raleway', sans-serif;
 src:url(https://fonts.googleapis.com/css?family=Raleway);
         }
         </style>
+        <style>
+        .floating-box {
+             display: inline-block;
+                width: 150px;
+                height: 75px;
+                margin: 10px;
+            }
+        </style>
     </head>
 
     <body>
@@ -44,6 +52,7 @@ src:url(https://fonts.googleapis.com/css?family=Raleway);
 
             <div class="starter-template">
                 <br><br><br><br><h1 ALIGN="center">This week's meal plan!</h1>
+                <div class="floating-box">Balance:{{curr_budget}}</div>
                 <br><br><table class="pure-table" align="center">
                     <thead>
                         <tr>
@@ -108,42 +117,42 @@ src:url(https://fonts.googleapis.com/css?family=Raleway);
                 </form>
                 <br><br><div class="col-md-4">
                     <figure>
-                        <img src={{url_list.0}} alt="YOU'VE BEEN METHED UP!!!" />
-                        <figcaption>Sunday</figcaption>
+                        <img src={{pic_url_list.0}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption><a href={{url_list.0}}>Sunday: <br>{{ meal_plan.0 }}</a></figcaption>
                     </figure>
-                    <figure>
-                        <img src={{url_list.1}} alt="YOU'VE BEEN METHED UP!!!" />
-                        <figcaption>Wednesday</figcaption>
+                    <br><figure>
+                        <img src={{pic_url_list.3}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption><a href={{url_list.3}}>Wednesday: <br>{{ meal_plan.3 }}</a></figcaption>
                     </figure>
-                    <figure>
-                        <img src={{url_list.2}} alt="YOU'VE BEEN METHED UP!!!" />
-                        <figcaption>Saturday</figcaption>
+                    <br><figure>
+                        <img src={{pic_url_list.6}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption><a href={{url_list.6}}>Saturday: <br>{{ meal_plan.6 }}</a></figcaption>
                     </figure>
                 </div>
                 <div class="col-md-4">
                     <figure>
-                        <img src={{url_list.3}} alt="YOU'VE BEEN METHED UP!!!" />
-                        <figcaption>Monday</figcaption>
+                        <img src={{pic_url_list.1}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption><a href={{url_list.1}}>Monday: <br>{{ meal_plan.1 }}</a></figcaption>
                     </figure>
-                    <figure>
-                        <img src={{url_list.4}} alt="YOU'VE BEEN METHED UP!!!" />
-                        <figcaption>Thursday</figcaption>
+                    <br><figure>
+                        <img src={{pic_url_list.4}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption><a href={{url_list.4}}>Thursday: <br>{{ meal_plan.4 }}</a></figcaption>
                     </figure>
                 </div>
                 <div class="cold-md-4">
                     <figure>
-                        <img src={{url_list.5}} alt="YOU'VE BEEN METHED UP!!!" />
-                        <figcaption>Tuesday</figcaption>
+                        <img src={{pic_url_list.2}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption><a href={{url_list.2}}>Tuesday: <br>{{ meal_plan.2 }}</a></figcaption>
                     </figure>
-                    <figure>
-                        <img src={{url_list.6}} alt="YOU'VE BEEN METHED UP!!!" />
-                        <figcaption>Friday</figcaption>
+                    <br><figure>
+                        <img src={{pic_url_list.5}} alt="YOU'VE BEEN METHED UP!!!" />
+                        <figcaption><a href={{url_list.5}}>Friday: <br>{{ meal_plan.5 }}</a></figcaption>
                     </figure>
                 </div>
 
             </div>
             <footer>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p>&copy; 2016 THEMETHINATORS.INC</p>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p>&copy; 2016 PetePantry</p>
             </footer>
         </div><!-- /.container -->
 

@@ -17,6 +17,7 @@ def getIngredients(genre):
     ingredients = list()
     book = {}
     book2 = {}
+    book3 = {}
 
     #Generate random recipe
     num = random.randint(0, len(j['hits'])-1)
@@ -27,6 +28,8 @@ def getIngredients(genre):
     book[j['hits'][num]['recipe']['label']] = ingredients
     pic = j['hits'][num]['recipe']['image']
     book2[j['hits'][num]['recipe']['label']] = pic
+    recipe = j['hits'][num]['recipe']['url']
+    book3[j['hits'][num]['recipe']['label']] = recipe
 
-    return book, book2
 
+    return book, book2, book3
