@@ -8,7 +8,6 @@ NUM_MEALS = 7
 
 
 def get_meal_plan(preferences, budget):
-    print(preferences)
     recipes = []
     total_cost = 0
     costs = []
