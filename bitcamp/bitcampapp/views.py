@@ -34,6 +34,7 @@ def display_meal_plan(request):
         Meal.objects.all().delete()
 
     contexts = {'meal_plan': meal_list, 'meal_costs' : cost_list}
+
     return render(request, 'bitcampapp/display_plan.html', contexts)
 
 
