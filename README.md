@@ -1,4 +1,4 @@
-# PeterPantry: A magical way to tinker your bell
+# PeterPantry: A magical way to tinker your culinary bell
 PeterPantry is a software service that generates a comprehensive meal plan that
 obeys budgetary and preferential constraints.
 

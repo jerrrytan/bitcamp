@@ -42,7 +42,8 @@ def display_meal_plan(request):
     if Meal.objects.all():
         Meal.objects.all().delete()
 
-    contexts = {'meal_plan': meal_list, 'meal_costs' : cost_list, 'url_list' : url_list}
+    contexts = {'meal_plan': meal_list, 'meal_costs' : cost_list,
+                'url_list' : url_list, 'curr_budget':banking.getBankAmount()}
     return render(request, 'bitcampapp/display_plan.html', contexts)
 
 
