@@ -12,6 +12,23 @@ def getFoodAmount():
     r = requests.get('http://api.reimaginebanking.com/accounts/57097f4a319313dd1b43b2bd?key=cf6fe22672e82008e57d304ac6e0d669')
     return json.loads(r.text)['balance']
 
+#Resets the account.
+def reset():
+	payload = {
+  		"medium": "balance",
+  		"payee_id": "57097a02319313dd1b43b29d",
+  		"amount": getFoodAmount(),
+  		"transaction_date": "2016-04-09",
+  		"status": "completed",
+  		"description": "string"
+	}
+
+	res = requests.post( 
+		'http://api.reimaginebanking.com/accounts/57097f4a319313dd1b43b2bd/transfers?key=cf6fe22672e82008e57d304ac6e0d669', 
+		data=json.dumps(payload),
+		headers={'content-type':'application/json'},
+	)
+
 #clear the food bank account
 def clearFood():
     payload = {
