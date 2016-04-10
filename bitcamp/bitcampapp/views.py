@@ -33,17 +33,21 @@ def display_meal_plan(request):
     meal_models = Meal.objects.all()
     meal_list = []
     cost_list = []
+    pic_url_list = []
     url_list = []
     for meal_model in meal_models:
         meal_list.append(meal_model.meal_name)
         cost_list.append(meal_model.meal_cost)
+        pic_url_list.append(meal_model.meal_pic_url)
         url_list.append(meal_model.meal_url)
+
 
     if Meal.objects.all():
         Meal.objects.all().delete()
 
     contexts = {'meal_plan': meal_list, 'meal_costs' : cost_list,
-                'url_list' : url_list, 'curr_budget':banking.getBankAmount()}
+                'pic_url_list' : pic_url_list,
+                'curr_budget':banking.getBankAmount(), 'url_list' : url_list }
     return render(request, 'bitcampapp/display_plan.html', contexts)
 
 

@@ -53,5 +53,5 @@ def get_meal_plan(preferences, budget):
     else:
         for (meal, cost, recipe_to_pic_url, recipe_url) in zip(recipes, costs, recipe_pic_urls,recipe_urls):
             m = Meal(meal_name=meal, meal_cost=math.floor(cost),
-                     meal_url=recipe_to_pic_url, recipe_url=recipe_url)
+                     meal_pic_url=recipe_to_pic_url, meal_url=recipe_url)
             m.save()
