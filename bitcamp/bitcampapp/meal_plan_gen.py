@@ -3,6 +3,7 @@ import math
 from bitcampapp.models import Meal
 from .get_ingredients import getIngredients
 from .priceme import load_recipes
+import time
 
 NUM_MEALS = 7
 
@@ -39,7 +40,6 @@ def get_meal_plan(preferences, budget):
     recipe_pic_urls = []
     recipe_urls = []
     total_cost = 0
-    print(recipes_to_pic_urls)
     for (recipe, cost) in (load_recipes(recipes_to_ingredients)).keys():
         recipes.append(recipe)
         costs.append(cost)
@@ -53,5 +53,6 @@ def get_meal_plan(preferences, budget):
     else:
         for (meal, cost, recipe_to_pic_url, recipe_url) in zip(recipes, costs, recipe_pic_urls,recipe_urls):
             m = Meal(meal_name=meal, meal_cost=math.floor(cost),
-                     meal_pic_url=recipe_to_pic_url, meal_url=recipe_url)
+                     meal_pic_url=recipe_to_pic_url, meal_url=recipe_url,
+                     unique_id=hash(time.clock()))
             m.save()
