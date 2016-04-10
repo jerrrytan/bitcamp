@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from . import meal_plan_gen
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from bitcampapp.models import Meal
+
 
 # Create your views here.
 
@@ -14,18 +15,25 @@ def index(request):
 def meal_preferences_select(request):
     preferences = [request.POST['p3'], request.POST['p2'], request.POST['p1']]
     budget = float(request.POST['budget'])
-    meal_plan_gen.get_meal_plan(preferences, budget)
-    return HttpResponseRedirect(reverse('display'))
+    try:
+        meal_plan_gen.get_meal_plan(preferences, budget)
+        return HttpResponseRedirect(reverse('display'))
+    except:
+        return HttpResponse("Insufficient funds", status=404)
 
 
 def display_meal_plan(request):
     meal_models = Meal.objects.all()
     meal_list = []
+    cost_list = []
     for meal_model in meal_models:
         meal_list.append(meal_model.meal_name)
+        cost_list.append(meal_model.meal_cost)
 
+    if Meal.objects.all():
+        Meal.objects.all().delete()
 
-    contexts = {'meal_plan': meal_list}
+    contexts = {'meal_plan': meal_list, 'meal_costs' : cost_list}
     return render(request, 'bitcampapp/display_plan.html', contexts)
 
 
