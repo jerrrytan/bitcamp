@@ -10,7 +10,8 @@ from . import banking
 
 
 def index(request):
-    return render(request, 'bitcampapp/index.html')
+    contexts = {'curr_budget' : banking.getBankAmount()}
+    return render(request, 'bitcampapp/index.html', contexts)
 
 
 def meal_preferences_select(request):
