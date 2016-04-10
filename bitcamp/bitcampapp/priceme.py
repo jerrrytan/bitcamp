@@ -61,7 +61,7 @@ def load_recipes(recipes,name="pricelist.csv"):
         price = 0.0
         for i in new_r[r]:
             try:
-                price = price +min(5.0, float(sum(Fraction(s) for s in i[1].split("[-]*|ml|g|L")))) * i[2][0]
+                price = price + float(sum(Fraction(s) for s in i[1].split("[-]*|ml|g|L"))) * i[2][0]
             except Exception:
                 pass
         final_r[(r,price)] = new_r[r]
