@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2016 Jerry Tan, Alex Pu, William Zhang, Harrison Huang, Thomas Tran
+Copyright (c) 2016 Jerry Tan, Alex Pu, William Zhang, Harrison Huang, Thomas "3 Reps 1 Plate" Tran
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
